@@ -22,8 +22,7 @@ jobs:
             fetch-depth: 10
             submodules: true
       
-      - name: Remove old CSS file
-        if: always()
+      - name: Remove old CSS file       
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -37,6 +36,7 @@ jobs:
           branch: Generic
           
       - name: Compile CSS from SCSS files
+        if: always()
         uses: gha-utilities/sass-build@v0.2.6
         with:
           source: main.scss
@@ -44,10 +44,12 @@ jobs:
       
       - name: Commit files
         run: |          
+          if: always()
           git add main.css
           git commit -m "Add CSS" -a
       
       - name: Push changes #2
+        if: always()
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
