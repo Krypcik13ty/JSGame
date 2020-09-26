@@ -45,7 +45,7 @@ jobs:
       - name: Commit files
         if: always()
         run: |          
-          git add main.css
+          git add -f main.css
           git commit -m "Add CSS" -a
       
       - name: Push changes #2
