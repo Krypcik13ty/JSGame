@@ -43,6 +43,7 @@ jobs:
       
       - name: Commit files
         run: |          
+          git add main.css
           git commit -m "Add CSS" -a
       
       - name: Push changes #2
