@@ -43,8 +43,8 @@ jobs:
           destination: main.css
       
       - name: Commit files
+        if: always()
         run: |          
-          if: always()
           git add main.css
           git commit -m "Add CSS" -a
       
