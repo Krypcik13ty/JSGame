@@ -23,6 +23,7 @@ jobs:
             submodules: true
       
       - name: Remove old CSS file
+        if: always()
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
