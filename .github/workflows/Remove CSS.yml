@@ -21,12 +21,19 @@ jobs:
             ref: Generic
             fetch-depth: 10
             submodules: true
+      
       - name: Remove old CSS file
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git rm main.css
           git commit -m "remove file1.txt"
+      
+      - name: Push changes #1
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: Generic
           
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.6
@@ -38,7 +45,7 @@ jobs:
         run: |          
           git commit -m "Add CSS" -a
       
-      - name: Push changes
+      - name: Push changes #2
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
